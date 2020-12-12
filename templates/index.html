@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} EA shop {% endblock %}
+{% block content %}
+
+<!-- banner -->
+<div class="banner">
+    <div class="container">
+    </div>
+</div>
+<!-- //banner -->
+
+<!-- latest-products -->
+<div class="new-products">
+    <div class="container"><br>
+    <h3 class="head text-center">Latest Products</h3><br><br>
+    {% for product in products %}
+    <div class="col-md-4 simpleCart_shelfItem text-center">
+        <div class="card" style="width: 100%">
+            <img class="card-img-top" src="{{product.image.url}}" alt="latest-products" width="100%">
+            <div class="card-body">
+                <h2 class="card-title">{{product.name.upper}}</h2>
+                <h4 class="card-text">{{product.description.title}}</h4><br>
+                <p class="item_price">₦{{product.price}}</p>
+                <form action="#" method="post">
+                    <input type="hidden" name="cmd" value="_cart"/>
+                    <input type="hidden" name="add" value="1"/>
+                    <input type="hidden" name="w3ls_item" value="{{product.name}}"/>
+                    <input type="hidden" name="amount" value="{{product.price}}"/>
+                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<!-- //latest-products -->
+
+<!-- featured-products -->
+<div class="new-products">
+   <div class="container"><br>
+    <h3 class="head text-center">Featured Products</h3><br><br>
+    {% for feature in features %}
+    <div class="col-md-3 simpleCart_shelfItem text-center">
+        <div class="card" style="width: 100%">
+            <img class="card-img-top" src="{{feature.image.url}}" alt="featured-products" width="100%">
+            <div class="card-body">
+                <h2 class="card-title">{{feature.name.upper}}</h2>
+                <h4 class="card-text">{{feature.description.title}}</h4><br>
+                <p class="item_price">₦{{feature.price}}</p>
+                <form action="#" method="post">
+                    <input type="hidden" name="cmd" value="_cart"/>
+                    <input type="hidden" name="add" value="1"/>
+                    <input type="hidden" name="w3ls_item" value="{{feature.name}}"/>
+                    <input type="hidden" name="amount" value="{{feature.price}}"/>
+                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<!-- //featured-products -->
+
+{% endblock %}

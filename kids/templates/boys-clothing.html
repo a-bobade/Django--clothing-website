@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Boys Clothing {% endblock %}
+
+{% block content %}
+
+<div class="container"><br>
+    <h1 class="head text-center">Boys Clothing</h1><br><br>
+    {% for boyclothe in boysclothes %}
+    <div class="col-md-4 simpleCart_shelfItem text-center">
+        <div class="card" style="width: 100%"><br>
+            <img class="card-img-top" src="{{boyclothe.image.url}}" alt="boys clothing" width="100%">
+            <div class="card-body">
+                <h3 class="card-title">{{boyclothe.name.upper}}</h3>
+                <h4 class="card-text">{{boyclothe.description.title}}</h4><br>
+                <i class="card-text">{{boyclothe.stock}} left in stock</i>
+                <p class="item_price">₦{{boyclothe.price}}</p>
+                <form action="#" method="post">
+                    <input type="hidden" name="cmd" value="_cart"/>
+                    <input type="hidden" name="add" value="1"/>
+                    <input type="hidden" name="w3ls_item" value="{{boyclothe.name}}"/>
+                    <input type="hidden" name="amount" value="{{boyclothe.price}}"/>
+                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

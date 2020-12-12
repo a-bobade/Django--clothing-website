@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} EA shop {% endblock %}
+
+{% block content %}
+
+<main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
+        <h2 class="my-5 h2 text-center">Checkout form</h2>
+        <div class="row">
+            <div class="col-md-8 mb-4">
+                <div class="card">
+                    <form action="../checkout/" method="post" class="card-body">
+                        {% csrf_token %}
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01"></label>
+                                <input type="text" class="form-control" id="validationCustom01" placeholder="First Name"
+                                       name="first_name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom02"></label>
+                                <input type="text" class="form-control" id="validationCustom02" placeholder="Last Name"
+                                       name="last_name" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustomUsername"></label>
+                                <input type="email" class="form-control" id="validationCustomUsername"
+                                       placeholder="Email" name="email">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom05"></label>
+                                <input type="tel" class="form-control" id="validationCustom05"
+                                       placeholder="Phone Number" name="phone_number" required maxlength="11"
+                                       pattern="[0-9]{4}[0-9]{3}[0-9]{4}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="validationCustom06"></label>
+                                <input type="number" class="form-control" id="validationCustom06" placeholder="Amount"
+                                       name="amount" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mb-4">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout
+                            </button>
+                            <br><br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+
+          }
+          form.classList.add('was-validated');
+        }, false);
+
+      });
+    }, false);
+
+  })();
+
+
+</script>

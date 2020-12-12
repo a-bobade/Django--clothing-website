@@ -1,0 +1,35 @@
+<title>Paystack</title>
+<body onload="payWithPaystack()">
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+window.onload=function(){
+payWithPaystack();
+};
+function payWithPaystack(){
+var handler = PaystackPop.setup({
+key: 'pk_test_65e02cdb63b69b6a85ec1edd55b502ac7b5d7c17',
+email:'{{email}}',
+amount: '{{amount}}00',
+currency: "NGN",
+metadata: {
+custom_fields: [
+{
+display_name: "Mobile Number",
+variable_name: "mobile_number",
+value: "{{phone}}"
+}
+]
+},
+callback: function(response){
+alert('success. transaction ref is ' + response.reference);
+},
+onClose: function(){
+alert('window closed');
+}
+});
+handler.openIframe();
+}
+</script>
+</body>
+
+<h3> Go back to <a href="/" style="text-decoration: none; color: skyblue;">Home Page</a></h3>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Jewellery {% endblock %}
+
+{% block content %}
+
+<div class="container"><br>
+    <h1 class="head text-center">Jewelleries</h1><br><br>
+    {% for jewellery in jewelleries %}
+    <div class="col-md-4 simpleCart_shelfItem text-center">
+        <div class="card" style="width: 100%">
+            <img class="card-img-top" src="{{jewellery.image.url}}" alt="jewelleries" width="100%">
+            <div class="card-body">
+                <h3 class="card-title">{{jewellery.name.upper}}</h3>
+                <h4 class="card-text">{{jewellery.description.title}}</h4><br>
+                <i class="card-text">{{jewellery.stock}} left in stock</i>
+                <p class="item_price">₦{{jewellery.price}}</p>
+                <form action="#" method="post">
+                    <input type="hidden" name="cmd" value="_cart"/>
+                    <input type="hidden" name="add" value="1"/>
+                    <input type="hidden" name="w3ls_item" value="{{jewellery.name}}"/>
+                    <input type="hidden" name="amount" value="{{jewellery.price}}"/>
+                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

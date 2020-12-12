@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Women Sunglasses {% endblock %}
+
+{% block content %}
+
+<div class="container"><br>
+    <h1 class="head text-center">Women Sunglasses</h1><br><br>
+    {% for womensunglass in womensunglasses %}
+    <div class="col-md-4 simpleCart_shelfItem text-center">
+        <div class="card" style="width: 100%">
+            <img class="card-img-top" src="{{womensunglass.image.url}}" alt="women sunglasses" width="100%">
+            <div class="card-body">
+                <h3 class="card-title">{{womensunglass.name.upper}}</h3>
+                <h4 class="card-text">{{womensunglass.description.title}}</h4><br>
+                <i class="card-text">{{womensunglass.stock}} left in stock</i>
+                <p class="item_price">₦{{womensunglass.price}}</p>
+                <form action="#" method="post">
+                    <input type="hidden" name="cmd" value="_cart"/>
+                    <input type="hidden" name="add" value="1"/>
+                    <input type="hidden" name="w3ls_item" value="{{womensunglass.name}}"/>
+                    <input type="hidden" name="amount" value="{{womensunglass.price}}"/>
+                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

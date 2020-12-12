@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Contact {% endblock %}
+
+{% block content %}
+
+<!-- mail -->
+<div class="mail">
+    <div class="container">
+        <h3>Contact Us</h3>
+        <div class="agile_mail_grids">
+            <div>
+                {% for message in messages %}
+                <h2 style="color:#3c43a4;"> {{ message }} </h2>
+                {% endfor %}
+            </div><br>
+            <div class="col-md-5 contact-left">
+                <h4>Address</h4>
+                <p>Ikeja, Lagos, Nigeria.
+                <ul>
+                    <li>Telephone : +234 818 096 4911</li>
+                    <li><a href="mailto:emmanuelabobade@gmail.com">emmanuelabobade@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="col-md-7 contact-left">
+                <h4>Contact Form</h4>
+                <form action="../contact/" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="contact_name" placeholder="Your Name" required="">
+                    <input type="email" name="contact_email" placeholder="Your Email" required="">
+                    <input type="text" name="contact_number" placeholder="Telephone No" required="">
+                    <textarea name="contact_comment" placeholder="Message..." required=""></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //mail -->
+{% endblock %}

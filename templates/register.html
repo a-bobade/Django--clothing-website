@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Register Account {% endblock %}
+
+{% block content %}
+
+<!-- registration-form -->
+<div class="registration-form">
+    <div class="container">
+        <h2>Registration</h2>
+        <div class="registration-grids">
+            <div class="reg-form">
+                <div class="reg">
+                    <p>Welcome, please enter the following details to continue.</p>
+                    <p>If you have previously registered with us, <a href="../login">click here</a></p>
+                    <form action="../register/" method="post">
+                        {% csrf_token %}
+                        <ul>
+                            <li class="text-info">Username:</li>
+                            <li><input type="text" name="username" required></li>
+                        </ul>
+                        <ul>
+                            <li class="text-info">First Name:</li>
+                            <li><input type="text" name="first_name" required></li>
+                        </ul>
+                        <ul>
+                            <li class="text-info">Last Name:</li>
+                            <li><input type="text" name="last_name" required></li>
+                        </ul>
+                        <ul>
+                            <li class="text-info">Email:</li>
+                            <li><input type="text" name="email" required></li>
+                        </ul>
+                        <ul>
+                            <li class="text-info">Password:</li>
+                            <li><input type="password" name="password1" required></li>
+                        </ul>
+                        <ul>
+                            <li class="text-info">Confirm Password:</li>
+                            <li><input type="password" name="password2" required></li>
+                        </ul>
+                        <input type="submit" value="REGISTER NOW">
+                    </form>
+
+                </div>
+            </div>
+            <div class="reg-right">
+                <h3>Completely Free Account</h3>
+                <div class="strip"></div>
+                <p>Opening an account with us is free, fill in your details.
+                    Your personal details are safe and secured.</p>
+            </div>
+            <div class="reg-right">
+                {% for message in messages %}
+                <h2> {{ message }} </h2>
+                {% endfor %}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
