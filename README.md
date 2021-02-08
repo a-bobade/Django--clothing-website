@@ -1,7 +1,7 @@
 # Django clothing website
 This is a very simple e-commerce website built with Django.
 # Project website 
-http://eashop.herokuapp.com
+https://eashop.herokuapp.com
 # Project Summary
 The website displays products. Users can add products to their cart. They can then enter their information and choose Paystack to handle the payment processing.
 # Running this project
